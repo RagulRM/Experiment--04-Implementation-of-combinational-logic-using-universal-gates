@@ -1,20 +1,27 @@
-# Experiment--04-Implementation-of-combinational-logic-using-universal-gates-
- ## Implementation-of-Half-subtractor-and-Full-subtractor-circuit
-## AIM:
-To implement the given logic function using NAND and NOR gates and to verify its operation in Quartus using Verilog programming.
-F=((C'.B.A)'(D'.C.A)'(C.B'.A)')' using NAND gate
-F=(((C.B'.A)+(D.C'.A)+(C.B'.A))')' using NOR gate
+### Experiment--02-Implementation-of-combinational-logic
+### Implementation of combinational logic gates
 
+### AIM:
+To implement the given logic function verify its operation in Quartus using Verilog programming. 
+F1= A’B’C’D’+AC’D’+B’CD’+A’BCD+BC’D 
+F2=xy’z+x’y’z+w’xy+wx’y+wxy
 
-## Equipments Required:
-### Hardware – PCs, Cyclone II , USB flasher
-### Software – Quartus prime
-## Theory
-```
-A universal gate is a logic gate which can implement any Boolean function without the need to use any other type of logic gate. The NOR gate and NAND gate are universal gates. This means that you can create any logical Boolean expression using only NOR gates or only NAND gates. In practice, this is advantageous since NOR and NAND gates are economical and easier to fabricate than other logic gates. Similarly, an OR gate is typically realised as a NOR gate followed by an inverter.
-```
-## Procedure
-```
+### Equipments Required:
+1.Hardware – PCs, Cyclone II , USB flasher
+2.Software – Quartus prime
+
+### Theory:
+Logic gates are electronic circuits which perform logical functions on one or more inputs to produce one output.
+
+F=((C'.B.A)'(D'.C.A)'(C.B'.A)')'
+
+1.AND gate The AND gate is an electronic circuit that gives a high output (1) only if all its inputs are high. A dot (.) is used to show the AND operation i.e. A.B or can be written as AB Y= A.B
+
+2.OR gate The OR gate is an electronic circuit that gives a high output (1) if one or more of its inputs are high. A plus (+) is used to show the OR operation. Y= A+B
+
+### Logic Diagram:
+
+### Procedure:
 1.Create a project with required entities.
 
 2.Create a module along with respective file name.
@@ -26,64 +33,42 @@ A universal gate is a logic gate which can implement any Boolean function withou
 5.Create university program(VWF) for getting timing diagram.
 
 6.Give the respective inputs for timing diagram and obtain the results.
+
+### Program:
+/* Program to implement the given logic function and to verify its operations in quartus using Verilog programming. 
+Developed by: RAGUL R
+RegisterNumber: 212222100040
+*/
+
 ```
-
-## Program:
-```
-Program to design a Implementation of combinational logic using universal gates-  and verify its truth table in quartus using Verilog programming.
-Developed by: PRANAVE B
-RegisterNumber:  212221240040
-
-## F=((C'.B.A)'(D'.C.A)'(C.B'.A)')' using NAND gate
-
-module Combination(A,B,C,D,F);
-input A,B,C,D;
-output F;
-wire P,Q,R;
-assign P = C&(~B)&(~A);
-assign Q = D&(~C)&(~A);
-assign R = (~C)&B&(~A);
-assign F = (~P&~Q&~R);
-endmodule
-
-## F=(((C.B'.A)+(D.C'.A)+(C.B'.A))')' using NOR gate
-
-module norcombination(A,B,C,D,F);
-input A,B,C,D;
-output F;
-wire P,Q,R,S;
-assign P = C&(~B)&A;
-assign Q = D&(~C)&A;
-assign R = C&(~B)&A;
-assign S = ~(P|Q|R);
-not(F,S);
+module logic(a,b,c,d,w,x,y,z,f1,f2);
+input a,b,c,d,w,x,y,z;
+output f1,f2;
+wire A1,A2,A3,A4,A5,B1,B2,B3,B4,B5;
+assign A1=((~a)&(~b)&(~c)&(~d));
+assign A2=(a&(~c)&(~d));
+assign A3=((~b)&c&(~d));
+assign A4=((~a)&b&c&d);
+assign A5=(b&(~c)&d);
+assign B1=(x&(~y)&z);
+assign B2=((~x)&(~y)&z);
+assign B3=((~w)&x&y);
+assign B4=(w&(~x)&y);
+assign B5=(w&x&y);
+assign f1=A1|A2|A3|A4|A5;
+assign f2=B1|B2|B3|B4|B5;
 endmodule
 ```
 
-## Output:
-### F=((C'.B.A)'(D'.C.A)'(C.B'.A)')' using NAND gate
-
-## Truthtable
-![Screenshot (359)](https://user-images.githubusercontent.com/93427208/167299431-5acc1ec0-5c86-40e1-9d05-0e07dcbd5c58.png)
 
 
-##  RTL realization
-![d2](https://user-images.githubusercontent.com/93427208/167299439-ebe0267b-0c25-4019-b5e3-8dc3bbc2b1b7.png)
+### RTL realization:
+![combilogic1](https://user-images.githubusercontent.com/121215739/234776673-b7a5ef09-5f27-40c6-ae87-a7633af82e04.png)
+![combilogic2](https://user-images.githubusercontent.com/121215739/234776690-bffe1289-66bb-4746-bbf9-3e86a6489353.png)
 
 
-## Timing diagram 
-![Screenshot (360)](https://user-images.githubusercontent.com/93427208/167299446-cddb33dd-7785-4918-adad-74e956bf9748.png)
+### Truth Table:
+![truthtable](https://user-images.githubusercontent.com/121215739/234778196-86915610-ab49-47ff-b6aa-f50976aaffa2.jpg)
 
-### F=(((C.B'.A)+(D.C'.A)+(C.B'.A))')' using NOR gate
-
-## Truthtable
-![Screenshot (361)](https://user-images.githubusercontent.com/93427208/167299662-4850c0ab-4253-46ea-9272-c58c9eb73e26.png)
-
-##  RTL realization
-![d2 o](https://user-images.githubusercontent.com/93427208/167299682-f823295c-2dc0-4478-bd9a-a9fbc1f1af53.png)
-
-## Timing diagram 
-![Screenshot (362)](https://user-images.githubusercontent.com/93427208/167299703-1bb93796-8e5f-4824-bd89-e1d4576907ab.png)
-
-## Result:
-Thus implementation of logic functions using NAND and NOR gates is done and its operation is verified in Quartus using Verilog programming.
+### Result:
+Thus the given logic functions are implemented using and their operations are verified using Verilog programming.
