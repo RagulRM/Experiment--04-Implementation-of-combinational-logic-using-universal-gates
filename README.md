@@ -63,7 +63,7 @@ endmodule
 
 
 ### RTL realization:
-![combilogic1](https://user-images.githubusercontent.com/121215739/234776673-b7a5ef09-5f27-40c6-ae87-a7633af82e04.png)
+![image](https://user-images.githubusercontent.com/121609342/234834764-9a1b7371-94ba-4743-8dab-0a36d6088128.png)
 ![combilogic2](https://user-images.githubusercontent.com/121215739/234776690-bffe1289-66bb-4746-bbf9-3e86a6489353.png)
 
 
